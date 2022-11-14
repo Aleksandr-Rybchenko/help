@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0" />
+    <title>TEST</title>
+    <meta name="description" content="" />
+    <link rel="shortcut icon" type="image/x-icon" href="https://cu1.uicdn.net/230/4c9659593b3d5c4113e4ac8fa7ece/webapp/33925-n-stage-nlement_blank-int.png" />
+    <link rel="stylesheet" type="text/css" href="./css/style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+</head>
+
+<body>
+    <div id="svg_inline"></div>
+    <div class="g-container">
+        <header class="g-header">
+            <p>кликни на число чтобы увеличить</p>
+            <p class="text">0</p>
+            <input class="input" type="text" style="border: 1px solid black" />
+            <button class="btn">добавить текст</button>
+            <p class="sectext">"ваш текст"</p>
+            <ul>
+                <h1>чтоб создать табы:</h1>
+                <li>1.получем наши кнопки и наш контент селектор олл</li>
+                <li>
+                    2.создаем функцию(1), в котором одно действие будет скрывать весь
+                    лишний контент, а второе действие будет давать событие по кнопке на
+                    элемент и передавать "индекс" аргумент в новую ()=> функцию(2)
+                </li>
+                <li>3.вызвать функцию(1)</li>
+                <li>
+                    4.создать функцию(2) с любым аргументом в которой сравниваем идекс
+                    полученый с аргументом и индекс контента
+                </li>
+                <li>
+                    5.если они совпадают дисплей опен(блок, флекс), а другим наоборот
+                </li>
+                <li>
+                    6.так же в функции(2) сравниваем индекс аргумента с индексом кнопки
+                    и делаем активный и неактивные классы
+                </li>
+            </ul>
+            <div class="section-tabs">
+                <style>
+                    .section-tabs {
+                        margin-top: 20px;
+                    }
+
+                    ul {
+                        margin-top: 20px;
+                        border: 1px solid black;
+                    }
+
+                    .section-tabs {
+                        border: 1px solid black;
+                    }
+
+                    .btns-tabs {
+                        display: flex;
+                        justify-content: space-between;
+                    }
+
+                    .content-tabs {
+                        display: flex;
+                    }
+
+                    .active {
+                        background-color: chartreuse;
+                        display: block;
+                    }
+                </style>
+
+                <div class="btns-tabs">
+                    <div class="btn-tab active">1</div>
+                    <div class="btn-tab">2</div>
+                    <div class="btn-tab">3</div>
+                    <div class="btn-tab">4</div>
+                </div>
+                <div class="content-tabs">
+                    <div class="content-tab">1</div>
+                    <div class="content-tab">2</div>
+                    <div class="content-tab">3</div>
+                    <div class="content-tab">4</div>
+                </div>
+            </div>
+        </header>
+        <!-- 
+    1. получем наши кнопки и наш контент селектор олл
+    2. создаем функцию(1), в котором одно действие будет скрывать весь лишний контент, а второе действие будет давать событие по кнопке на элемент и передавать "индекс" аргумент в новую ()=> функцию(2)
+    3. вызвать функцию(1)
+    4.создать функцию(2) с любым аргументом в которой сравниваем идекс полученый с аргументом и индекс контента
+    5. если они совпадают дисплей опен(блок, флекс), а другим наоборот
+    6. так же в функции(2) сравниваем индекс аргумента с индексом кнопки и делаем активный и неактивные классы
+ -->
+        <main class="g-main"></main>
+
+        <footer class="g-footer"></footer>
+
+    </div>
+
+    <script>
+        const textS = document.querySelectorAll(".text");
+        const inputText = document.querySelector(".input");
+        const secText = document.querySelector(".sectext");
+        const btn = document.querySelector(".btn");
+
+        textS.forEach((elem, index) => {
+            let count = 0;
+            elem.addEventListener("click", () => {
+                count++;
+                elem.innerHTML = count;
+            });
+        });
+        //
+        btn.addEventListener("click", () => {
+            let finishText = inputText.value;
+            secText.innerHTML = `"${finishText}"`;
+        });
+        //
+
+        //tabs;
+        const contTabs = document.querySelectorAll(".content-tab");
+        const btnTabs = document.querySelectorAll(".btn-tab");
+        initTabs = () => {
+            contTabs.forEach((elem, index) => {
+                // 1. если индекс нашего контента не 0, то мы его скрываем
+                if (index !== 0) {
+                    elem.style.display = "none";
+                }
+            });
+            btnTabs.forEach((elem, index) => {
+                // 2. добавляем событие на тот элемент по которому был клик
+                // 3. и передаем функцию с аргументом индекса
+                elem.addEventListener("click", () => conTab(index));
+            });
+        };
+        initTabs();
+        conTab = (idx) => {
+            // 4. получаем индекс с нажатой кнопки в эту функцию
+            contTabs.forEach((elem, index) => {
+                // 5. если наши индексы совпадают то дисплей флекс если нет скрываем контент
+                if (idx === index) {
+                    elem.style.display = "flex";
+                } else {
+                    elem.style.display = "none";
+                }
+            });
+            btnTabs.forEach((elem, index) => {
+                // 6. индекс который мы получили в функции сравниваем, если совпадают то добавляем класс актив, в противном случае удаляем этот класс
+                if (idx === index) {
+                    elem.classList.add("active");
+                } else {
+                    elem.classList.remove("active");
+                }
+            });
+        };
+
+        // const contTabs = document.querySelectorAll(".content-tab");
+        // const btnTabs = document.querySelectorAll(".btn-tab");
+        // tabsFN = () => {
+        // 	contTabs.forEach((elem, index) => {
+        // 		if (index !== 0) {
+        // 			elem.style.display = "none";
+        // 		}
+        // 	});
+        // 	btnTabs.forEach((elem, index) => {
+        // 		elem.addEventListener("click", () => changeFN(index));
+        // 	});
+        // };
+        // tabsFN();
+        // changeFN = (ind) => {
+        // 	contTabs.forEach((elem, index) => {
+        // 		if (ind === index) {
+        // 			elem.style.display = "block";
+        // 		} else {
+        // 			elem.style.display = "none";
+        // 		}
+        // 	});
+        // 	btnTabs.forEach((elem, index) => {
+        // 		if (ind === index) {
+        // 			elem.classList.add("active");
+        // 		} else {
+        // 			elem.classList.remove("active");
+        // 		}
+        // 	});
+        // };
+    </script>
+
+</body>
+
+</html>

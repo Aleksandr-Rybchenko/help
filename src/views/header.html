@@ -1,1 +1,75 @@
-<header class="g-header"></header>
+<header class="g-header">
+	<p>кликни на число чтобы увеличить</p>
+	<p class="text">0</p>
+	<input class="input" type="text" style="border: 1px solid black" />
+	<button class="btn">добавить текст</button>
+	<p class="sectext">"ваш текст"</p>
+	<ul>
+		<h1>чтоб создать табы:</h1>
+		<li>1.получем наши кнопки и наш контент селектор олл</li>
+		<li>
+			2.создаем функцию(1), в котором одно действие будет скрывать весь
+			лишний контент, а второе действие будет давать событие по кнопке на
+			элемент и передавать "индекс" аргумент в новую ()=> функцию(2)
+		</li>
+		<li>3.вызвать функцию(1)</li>
+		<li>
+			4.создать функцию(2) с любым аргументом в которой сравниваем идекс
+			полученый с аргументом и индекс контента
+		</li>
+		<li>
+			5.если они совпадают дисплей опен(блок, флекс), а другим наоборот
+		</li>
+		<li>
+			6.так же в функции(2) сравниваем индекс аргумента с индексом кнопки
+			и делаем активный и неактивные классы
+		</li>
+	</ul>
+	<div class="section-tabs">
+		<style>
+			.section-tabs {
+				margin-top: 20px;
+			}
+			ul {
+				margin-top: 20px;
+				border: 1px solid black;
+			}
+			.section-tabs {
+				border: 1px solid black;
+			}
+			.btns-tabs {
+				display: flex;
+				justify-content: space-between;
+			}
+			.content-tabs {
+				display: flex;
+			}
+
+			.active {
+				background-color: chartreuse;
+				display: block;
+			}
+		</style>
+
+		<div class="btns-tabs">
+			<div class="btn-tab active">1</div>
+			<div class="btn-tab">2</div>
+			<div class="btn-tab">3</div>
+			<div class="btn-tab">4</div>
+		</div>
+		<div class="content-tabs">
+			<div class="content-tab">1</div>
+			<div class="content-tab">2</div>
+			<div class="content-tab">3</div>
+			<div class="content-tab">4</div>
+		</div>
+	</div>
+</header>
+<!-- 
+    1. получем наши кнопки и наш контент селектор олл
+    2. создаем функцию(1), в котором одно действие будет скрывать весь лишний контент, а второе действие будет давать событие по кнопке на элемент и передавать "индекс" аргумент в новую ()=> функцию(2)
+    3. вызвать функцию(1)
+    4.создать функцию(2) с любым аргументом в которой сравниваем идекс полученый с аргументом и индекс контента
+    5. если они совпадают дисплей опен(блок, флекс), а другим наоборот
+    6. так же в функции(2) сравниваем индекс аргумента с индексом кнопки и делаем активный и неактивные классы
+ -->

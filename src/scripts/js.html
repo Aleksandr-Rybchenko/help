@@ -1,0 +1,87 @@
+<script>
+	const textS = document.querySelectorAll(".text");
+	const inputText = document.querySelector(".input");
+	const secText = document.querySelector(".sectext");
+	const btn = document.querySelector(".btn");
+
+	textS.forEach((elem, index) => {
+		let count = 0;
+		elem.addEventListener("click", () => {
+			count++;
+			elem.innerHTML = count;
+		});
+	});
+	//
+	btn.addEventListener("click", () => {
+		let finishText = inputText.value;
+		secText.innerHTML = `"${finishText}"`;
+	});
+	//
+
+	//tabs;
+	const contTabs = document.querySelectorAll(".content-tab");
+	const btnTabs = document.querySelectorAll(".btn-tab");
+	initTabs = () => {
+		contTabs.forEach((elem, index) => {
+			// 1. если индекс нашего контента не 0, то мы его скрываем
+			if (index !== 0) {
+				elem.style.display = "none";
+			}
+		});
+		btnTabs.forEach((elem, index) => {
+			// 2. добавляем событие на тот элемент по которому был клик
+			// 3. и передаем функцию с аргументом индекса
+			elem.addEventListener("click", () => conTab(index));
+		});
+	};
+	initTabs();
+	conTab = (idx) => {
+		// 4. получаем индекс с нажатой кнопки в эту функцию
+		contTabs.forEach((elem, index) => {
+			// 5. если наши индексы совпадают то дисплей флекс если нет скрываем контент
+			if (idx === index) {
+				elem.style.display = "flex";
+			} else {
+				elem.style.display = "none";
+			}
+		});
+		btnTabs.forEach((elem, index) => {
+			// 6. индекс который мы получили в функции сравниваем, если совпадают то добавляем класс актив, в противном случае удаляем этот класс
+			if (idx === index) {
+				elem.classList.add("active");
+			} else {
+				elem.classList.remove("active");
+			}
+		});
+	};
+
+	// const contTabs = document.querySelectorAll(".content-tab");
+	// const btnTabs = document.querySelectorAll(".btn-tab");
+	// tabsFN = () => {
+	// 	contTabs.forEach((elem, index) => {
+	// 		if (index !== 0) {
+	// 			elem.style.display = "none";
+	// 		}
+	// 	});
+	// 	btnTabs.forEach((elem, index) => {
+	// 		elem.addEventListener("click", () => changeFN(index));
+	// 	});
+	// };
+	// tabsFN();
+	// changeFN = (ind) => {
+	// 	contTabs.forEach((elem, index) => {
+	// 		if (ind === index) {
+	// 			elem.style.display = "block";
+	// 		} else {
+	// 			elem.style.display = "none";
+	// 		}
+	// 	});
+	// 	btnTabs.forEach((elem, index) => {
+	// 		if (ind === index) {
+	// 			elem.classList.add("active");
+	// 		} else {
+	// 			elem.classList.remove("active");
+	// 		}
+	// 	});
+	// };
+</script>
